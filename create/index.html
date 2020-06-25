@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>انشاء السيرة الذاتية</title>
+</head>
+<body>
+    <header>
+        <a href="../"><h1>C<span>V</span></h1></a>
+    </header>
+
+    <div class="banner">
+        <div class="banner-box">
+            <h1>C<span>V</span></h1>
+            <h2>قم بملىء البيانات الان واحصل علي سيرة ذاتية مجانية  وستكون قادر علي تحمليها
+                <br> وتحميل الصفحة لتقوم بالتعديل عليها لاحقاً كما تريد PDF
+            </h2>
+        </div>
+    </div>
+
+    <div class="facebook">
+        <a href="">FACEBOOK  <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="facebook" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="svg-inline--fa fa-facebook fa-w-16 fa-7x"><path fill="white" d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z" class=""></path></svg></a>
+    </div>
+
+    <div class="container">
+
+        <div class="header">
+            <p> السيرة الذاتية</p>
+        </div>
+
+        <div class="content-box">
+            <div class="bio">
+                <p>البيانات الشخصية</p>
+                <div class="group-form">
+                    <div class="group-input">
+                        <label for="name"> الاسم بالكامل <span>*</span></label>
+                        <input type="text" placeholder="اكتب اسمك..">
+                    </div>
+                </div>
+                <div class="group-form">
+                    <div class="group-input">
+                        <label for="name"> البريد الالكتروني <span>*</span> </label>
+                        <input type="email" placeholder="اكتب بريدك الالكتروني..">
+                    </div>
+                </div>
+                <div class="group-form">
+                    <div class="group-input">
+                        <label for="name"> رقم الهاتف <span>*</span></label>
+                        <input type="text" placeholder=" ادخل رقم هاتفك المحمول..">
+                    </div>
+                </div>
+                <div class="group-form">
+                    <div class="group-input">
+                        <label for="name"> الرقم الارضي  <span>*</span></label>
+                        <input type="text" placeholder=" ادخل رقم هاتفك الارضي..">
+                    </div>
+                </div>
+                <div class="group-form">
+                    <div class="group-input">
+                        <label for="name"> تاريخ الميلاد<span>*</span></label>
+                        <input type="date" >
+                    </div>
+                </div>    
+                <div class="group-form">
+                    <div class="group-input">
+                        <label for="name">  العنوان <span>*</span></label>
+                        <input type="text" placeholder="اكتب العنوان بالكامل..">
+                    </div>
+                </div>    
+                <div class="group-form">
+                    <div class="group-input">
+                        <label for="name"> الحالة الاجتماعية <span>*</span></label>
+                        <input type="text" placeholder="اكتب حالتك الاجتماعية..">
+                    </div>
+                </div>         
+                <div class="group-form">
+                    <div class="group-input">
+                        <label for="name"> الجنسية <span>*</span></label>
+                        <input type="text" placeholder="اكتب  جنسيتك..">
+                    </div>
+                </div>                   
+            </div>
+
+            <div class="bio">
+                <p> المؤهلات الدراسية</p>
+                <div class="group-form">
+                    <div class="group-input">
+                        <label for="name">  المؤهل الدراسي <span>*</span></label>
+                        <input type="text" placeholder="اكتب مؤهلك الدراسي ..">
+                    </div>
+                </div>
+                <div class="group-form">
+                    <div class="group-input">
+                        <label for="name">  سنة التخرج <span>*</span></label>
+                        <input type="text" placeholder="ادخل سنة التخرج الخاصة بتلك المؤهل الدراسي..">
+                    </div>
+                </div>
+                <div class="more">
+                    <p>يمكنك اضافة المزيد من المؤهلات بالضغط علي تلك الزر, يمكنك التخطي ايضا</p>
+                    <button class="btn-more">ادخل المزيد</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <script src="./jquery-3.5.1.min (1).js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.btn-more').click(function(){
+            $(this).parent().parent().append("<div class='group-form'><div class='group-input'><label for='name'>  المؤهل الدراسي <span>*</span></label> <input type='text' placeholder='اكتب مؤهلك الدراسي ..'></div></div> <div class='group-form'><div class='group-input'><label for='name'>  سنة التخرج  <span>*</span></label><input type='text' placeholder='ادخل سنة التخرج الخاصة بتلك المؤهل الدراسي..'></div></div>")
+      $(this).parent().fadeOut('slow');
+        });
+    });
+    </script>
+</body>
+</html>
