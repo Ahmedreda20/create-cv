@@ -32,10 +32,11 @@ body{
 header{
     padding: 10px 0;
     height: 40px;
-    position: fixed;
     background: #c70039;
     width: 100%;
     z-index: 1;
+    position: relative;
+
 }
 @keyframes fades{
     from{
