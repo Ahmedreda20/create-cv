@@ -1,6 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Reem+Kufi&display=swap');
-
+@font-face {
+    font-family: 'kufi-arabic';
+    src: url('./fonts/noto-kufi-arabic-61eb13c9e3/ArbFONTS-22015-notokufiarabic-regular.ttf');  
+    font-weight: normal;
+    font-style: normal;
+}
 *{
     margin: 0;
     padding: 0;
@@ -11,7 +15,7 @@ body{
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     -o-box-sizing: border-box;
-    font-family: 'Tajawal', sans-serif;
+    font-family: 'kufi-arabic';
     scroll-behavior: smooth;
 }
 header{
@@ -40,7 +44,7 @@ header button{
     right: 0;
     cursor: pointer;
     outline: none;
-    font-family: 'Tajawal';
+    font-family: 'kufi-arabic';
     padding: 10px;
     background: #00005c;
     color: white;
@@ -53,9 +57,7 @@ header button{
 .banner{
     width: 100%;
     height: 92vh;
-    /* background: url('https://images.pexels.com/photos/1808200/pexels-photo-1808200.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
-    /* background: url('https://images.pexels.com/photos/1472856/pexels-photo-1472856.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
-background: url('https://images.pexels.com/photos/1730560/pexels-photo-1730560.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+    background: url('https://images.pexels.com/photos/1730560/pexels-photo-1730560.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
     background-repeat: no-repeat;
     background-size: 100% 100%;
     display: flex;
