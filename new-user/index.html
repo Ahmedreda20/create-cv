@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>التسجيل</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <p>قم بالتسجيل الان مجانا واحصل علي سيرة ذاتية مجانية</p>
+        </div>
+        <form action="" class="sign-up">
+            <p></p>
+            <div class="group-form">
+                <div class="group-input">
+                    <label for="name">الاسم بالكامل</label>
+                    <input type="text" id="fullname" placeholder="ادخل اسمك هنا" required autocomplete="off" >
+                </div>
+            </div>
+            <div class="group-form">
+                <div class="group-input">
+                    <label for="name">البريد الالكتروني</label>
+                    <input type="email" id="email" placeholder="ادخل  البريد الالكتروني هنا" required autocomplete="off" >                                   
+                </div>
+            </div>
+            <div class="group-form">
+                <div class="group-input">
+                    <label for="name"> اعادة البريد الالكتروني</label>
+                    <input type="email" id="email-v" placeholder="اعد البريد هنا" required autocomplete="off" >
+                </div>
+            </div>
+            <div class="group-form">
+                <div class="group-input">
+                    <label for="name">رقم الهاتف</label>
+                    <input type="phone" id="phone" placeholder=" ادخل رقم الهاتف" required autocomplete="off" >
+                </div>
+            </div>
+            <div class="group-form">
+                <div class="group-input">
+                    <label for="name"> كلمة السر</label>
+                    <input type="password" id="password" placeholder="ادخل كلمة السر هنا هنا" required autocomplete="off" >
+                </div>
+            </div>
+        
+            <div class="group-form">
+                <button class="btn-sign-up" type="submit">تسجيل </button>
+            </div>
+               </form>
+    </div>
+        <div class="group-form uploader">
+            <div class="group-form">
+                <label for="profile">تحميل صورة شخصية</label>
+                <input type="file"  id="profile">
+            </div>
+        </div>
+
+    <script src="../create/jquery-3.5.1.min (1).js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-database.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.15.5/firebase-analytics.js"></script>
+    
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyCE1UG2U-fQ33pNjUik65eTlkMbUUH8m64",
+        authDomain: "free-cv-0.firebaseapp.com",
+        databaseURL: "https://free-cv-0.firebaseio.com",
+        projectId: "free-cv-0",
+        storageBucket: "free-cv-0.appspot.com",
+        messagingSenderId: "77785431839",
+        appId: "1:77785431839:web:a5365a7e103c0ad5c6fa2a",
+        measurementId: "G-L4Y1EXXJB8"
+      };
+      firebase.initializeApp(firebaseConfig);
+      var db = firebase.firestore();
+
+      var form = document.querySelector('.sign-up');
+      var container = document.querySelector('.container');
+      var loader = document.querySelector('.uploader');
+      form.addEventListener('submit' , (e) =>{
+          e.preventDefault();
+          var name = form['fullname'].value;
+          var email = form['email'].value;
+          var emailcon = form['email-v'].value;
+          var password = form['password'].value;
+          var phone = form['phone'].value;
+          var profile_photo = form['profile'];
+          if( emailcon != email){          
+            $('form p').html('هناك خطأ ما يجب ان يكون البريد مطابق تماماً')
+          }else{
+
+            firebase.auth().createUserWithEmailAndPassword(email, password).then(cred =>{ 
+            return db.collection("users").doc(cred.user.uid).set({
+            name: name,
+            email: email,
+            emailcon: emailcon,
+            password: password,
+            phone: phone
+            });
+            }).catch(error =>{
+                $('form p').replace('هناك حساب اخر مسجل بهذا البريد الالكتروني بالفعل');
+            });
+          }
+      });
+
+      firebase.auth().onAuthStateChanged(function(user) {
+    var container = document.querySelector('.container');
+      var loader = document.querySelector('.uploader');
+   if (user) {
+       container.style.display  = "none";
+       loader.style.display  = "block";
+       var loader  =document.querySelector('#profile');
+       loader.addEventListener('change',  function(e){
+           var file = e.target.files[0];
+           firebase.storage().ref('users/' + user.uid +'/profile.png').put(file).then(function(){
+           }).catch(error =>{
+               console.log(error.message)
+           }).then(function(){
+               window.open('../create' , '_self')
+           });
+       });
+   }else{
+    loader.style.display  = "none";
+    container.style.display  = "block";
+   }
+});
+
+    </script>
+</body>
+</html>
